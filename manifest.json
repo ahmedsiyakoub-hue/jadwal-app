@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "ذكرني",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ذكرني",
+  "start_url": "/",
+  "theme_color": "#ffffff"
+}
