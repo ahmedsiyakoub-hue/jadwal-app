@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق جدول - Jadwal App</title>
+    <!-- ربط ملف المانيفست -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            direction: rtl;
+            text-align: right;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .schedule-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+        /* تصميم مساحة الإعلانات في الأسفل */
+        .ad-container {
+            margin-top: 30px;
+            padding: 10px;
+            background: #fff3cd;
+            border: 1px dashed #ffeeba;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .ad-container p {
+            font-size: 12px;
+            color: #856404;
+            margin: 0 0 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>جدولي اليومي</h1>
+        
+        <div class="schedule-box">
+            <h3>المهام النشطة عبر الإنترنت:</h3>
+            <p id="status-text">جاري الاتصال بالبيانات السحابية...</p>
+        </div>
+
+        <!-- قسم الإعلانات لكسب المال -->
+        <div class="ad-container">
+            <p>إعلان ترويجي / Ad Banner</p>
+            <!-- يمكنك وضع كود إعلانات Google AdSense أو أي شبكة إعلانية هنا مستقبلاً -->
+            <div style="background: #ddd; padding: 15px; border-radius: 4px; color: #555; font-size: 14px;">
+                مساحة إعلانية جاهزة للأرباح
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // محاكاة الاتصال بالإنترنت وتحديث البيانات
+        window.addEventListener('load', () => {
+            const statusText = document.getElementById('status-text');
+            if (navigator.onLine) {
+                statusText.innerText = "متصل بالإنترنت - يتم مزامنة الجداول بنجاح.";
+            } else {
+                statusText.innerText = "غير متصل بالإنترنت - يتم عرض النسخة المخزنة محلياً.";
+            }
+        });
+
+        // تفعيل خدمة التطبيق (Service Worker) للإشعارات والتشغيل
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('تم تفعيل خدمة التطبيق والإشعارات بنجاح'))
+                .catch((err) => console.log('خطأ في تفعيل الخدمة:', err));
+        }
+    </script>
+
+</body>
+</html>
